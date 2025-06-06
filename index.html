@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para K.A.D.C - Con Amor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&family=Dancing+Script:wght@700&display=swap');
+        
+        :root {
+            --primary: #e8a1a8; /* Rosa suave */
+            --secondary: #f8f1f1; /* Blanco roto */
+            --accent: #d8b5b5; /* Rosa vintage */
+            --dark: #3a3a3a; /* Gris oscuro */
+            --gold: #d4af37; /* Dorado */
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .fashion-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                        url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .initials {
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            letter-spacing: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .initials::after {
+            content: "";
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        .love-letter {
+            padding: 8rem 15%;
+            background-color: white;
+            position: relative;
+        }
+        
+        .letter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 4rem;
+            background-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--gold);
+        }
+        
+        .letter-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                to right,
+                transparent,
+                transparent 20px,
+                var(--gold) 20px,
+                var(--gold) 40px
+            );
+        }
+        
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .letter-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: right;
+            margin-top: 3rem;
+        }
+        
+        .fashion-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 5rem 10%;
+            background-color: var(--secondary);
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .final-message {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(232, 161, 168, 0.8), rgba(232, 161, 168, 0.8)), 
+                        url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 0 20%;
+        }
+        
+        .heart-beat {
+            font-size: 5rem;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 2rem;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: float-up 4s linear infinite;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Estilos para el control de música */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(232, 161, 168, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .music-control i {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .initials {
+                font-size: 4rem;
+            }
+            
+            .title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .love-letter {
+                padding: 4rem 5%;
+            }
+            
+            .letter-content {
+                padding: 2rem;
+            }
+            
+            .final-message {
+                padding: 0 10%;
+            }
+        }
+    </style>
+    <!-- Iconos para el control de música -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Control de música -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+        <span>Reproducir música</span>
+    </div>
+    
+    <!-- Elemento de audio -->
+    <audio id="bgMusic" loop>
+        <source src="Lauv - I Like Me Better (Traducida al Español).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <header class="fashion-header">
+        <div class="initials">K.A.D.C</div>
+        <h1 class="title">Diseñadora de Modas</h1>
+        <p class="subtitle">Donde la elegancia encuentra la pasión</p>
+        <div class="scroll-down">⌵</div>
+    </header>
+    
+    <section class="love-letter">
+        <div class="letter-content">
+            <h2 class="letter-title">Para la diseñadora de mi corazón</h2>
+            
+            <p class="letter-text">
+                Querida K.A.D.C,
+            </p>
+            
+            <p class="letter-text">
+                Cada diseño que creas es como un reflejo de tu alma: único, hermoso y lleno de pasión. 
+                Así como transformas telas en obras de arte, has transformado mi vida en algo extraordinario.
+            </p>
+            
+            <p class="letter-text">
+                Admiro cómo ves belleza donde otros solo ven tela, cómo transformas lo ordinario en extraordinario, 
+                y cómo cada creación tuya lleva ese toque especial que solo tú puedes dar. 
+                Tu creatividad me inspira cada día, y tu amor da color a mi mundo.
+            </p>
+            
+            <p class="letter-text">
+                En este mundo de modas y diseños, quiero que sepas que el mejor diseño que he visto en mi vida 
+                es el de nuestro amor, tejido con los hilos más finos de comprensión, paciencia y cariño.
+            </p>
+            
+            <p class="letter-text">
+                Eres mi musa, mi inspiración y mi mayor amor. 
+                Cada día a tu lado es como una nueva colección llena de posibilidades y belleza.
+            </p>
+            
+            <div class="signature">Con todo mi amor</div>
+        </div>
+    </section>
+    
+    <section class="fashion-gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Diseño de moda" class="gallery-img">
+            <div class="gallery-caption">
+                <h3>Tu creatividad</h3>
+                <p>Es lo que más admiro de ti</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Pasarela" class="gallery-img">
+            <div class="gallery-caption">
+                <h3>Tu pasión</h3>
+                <p>Brilla más que cualquier pasarela</p>
+            </div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Tela y aguja" class="gallery-img">
+            <div class="gallery-caption">
+                <h3>Tu dedicación</h3>
+                <p>Tan precisa como cada puntada</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="final-message">
+        <div class="heart-beat">❤️</div>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Eres la diseñadora de mi corazón</h2>
+        <p style="font-size: 1.2rem; max-width: 600px;">
+            K.A.D.C, en este mundo de modas efímeras, quiero que sepas que mi amor por ti es como un diseño clásico: 
+            atemporal, elegante y hecho para durar toda la vida.
+        </p>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Corazones flotantes
+            const floatingHearts = document.getElementById('floatingHearts');
+            
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                floatingHearts.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+            
+            setInterval(createHeart, 300);
+            
+            // Scroll suave
+            document.querySelector('.scroll-down').addEventListener('click', function() {
+                window.scrollTo({
+                    top: document.querySelector('.love-letter').offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Efecto de máquina de escribir para el título
+            const title = document.querySelector('.title');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                }
+            }, 150);
+            
+            // Control de música
+            const musicControl = document.getElementById('musicControl');
+            const bgMusic = document.getElementById('bgMusic');
+            let musicPlaying = false;
+            
+            // Configura el volumen bajo
+            bgMusic.volume = 0.3;
+            
+            // Intenta reproducir automáticamente (puede no funcionar en algunos navegadores)
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // La reproducción automática funcionó
+                    musicPlaying = true;
+                    updateMusicControl();
+                })
+                .catch(error => {
+                    // La reproducción automática falló
+                    musicPlaying = false;
+                    updateMusicControl();
+                });
+            }
+            
+            // Controlador de clic para el control de música
+            musicControl.addEventListener('click', function() {
+                if (musicPlaying) {
+                    bgMusic.pause();
+                    musicPlaying = false;
+                } else {
+                    bgMusic.play();
+                    musicPlaying = true;
+                }
+                updateMusicControl();
+            });
+            
+            function updateMusicControl() {
+                if (musicPlaying) {
+                    musicControl.innerHTML = '<i class="fas fa-pause"></i><span>Pausar música</span>';
+                } else {
+                    musicControl.innerHTML = '<i class="fas fa-play"></i><span>Reproducir música</span>';
+                }
+            }
+            
+            // Actualiza el control visual inicial
+            updateMusicControl();
+        });
+    </script>
+</body>
+</html>
