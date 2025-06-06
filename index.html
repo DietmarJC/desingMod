@@ -308,6 +308,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <script>
+    const contraseñaCorrecta = "Almendra1316";
+    let intento = prompt("Por favor, ingresa la contraseña para acceder:");
+
+    if (intento !== contraseñaCorrecta) {
+        alert("Contraseña incorrecta. No puedes acceder.");
+        document.body.innerHTML = ""; // Borra el contenido
+        document.body.style.backgroundColor = "#000"; // Opcional: pantalla negra
+    }
+    </script>
     <div class="floating-hearts" id="floatingHearts"></div>
     
     <!-- Control de música -->
@@ -319,7 +329,6 @@
     <!-- Elemento de audio -->
     <audio id="bgMusic" loop>
         <source src="Lauv - I Like Me Better (Traducida al Español).mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
     </audio>
     
     <header class="fashion-header">
